@@ -4,7 +4,7 @@ const {
     GraphQLString,
 } = require("graphql");
 const {
-    GraphQLDate,
+    GraphQLDateTime,
 } = require("graphql-iso-date");
 const QueryVacant = new GraphQLObjectType({
     name: "QueryVacant",
@@ -18,7 +18,7 @@ const QueryVacant = new GraphQLObjectType({
         status: { type: GraphQLString },
         rating: { type: GraphQLInt },
         modality: { type: GraphQLString },
-        date: { type: GraphQLDate },
+        date: { type: GraphQLString},
         salary: { type: GraphQLString },
         urlVacant: { type: GraphQLString },
         urlCompany: { type: GraphQLString }
@@ -36,7 +36,7 @@ const MutationVacant = new GraphQLObjectType({
         status: { type: GraphQLString },
         rating: { type: GraphQLInt },
         modality: { type: GraphQLString },
-        date: { type: GraphQLDate },
+        date: { type: GraphQLString },
         salary: { type: GraphQLString },
         urlVacant: { type: GraphQLString },
         urlCompany: { type: GraphQLString }
