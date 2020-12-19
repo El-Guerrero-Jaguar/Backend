@@ -1,14 +1,13 @@
 const { db } = require("../../lib/conexionDB");
 const {
-    GraphQLID 
+    GraphQLList 
 } = require("graphql");
 const QueryVacant = require("../schemas/vacants").QueryVacant;
 
-const GetVacant = {
-    type: QueryVacant,
-    args: { id: { type: GraphQLID } },
+const GetAllVacants = {
+    type: GraphQLList(QueryVacant),
     resolve(parentValue, args){
-        const values = [atgs.id];
+        const values = true;
         const query = `SELECT * FROM public Vacants WHERE id=$1`;
         return db
             .one(query,values)
@@ -17,4 +16,4 @@ const GetVacant = {
     },
 };
 
-module.exports = GetVacant;
+module.exports = GetAllVacants;

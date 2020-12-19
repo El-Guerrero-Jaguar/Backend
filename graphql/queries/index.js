@@ -1,11 +1,14 @@
 const { GraphQLObjectType } = require("graphql");
-const vacants = require("./vacants");
-
+const GetVacants = require("./vacants");
+const GetUser = require ("./users");
+const GetAllVacants =require("./allVacants");
 const RootQuery = new GraphQLObjectType({
     name: "RootQuery",
     type: "Query",
     fields: {
-        vacants,
+        GetVacants,
+        GetUser,
+        GetAllVacants,
     },    
 });
 

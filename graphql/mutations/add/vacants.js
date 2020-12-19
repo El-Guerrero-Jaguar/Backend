@@ -23,8 +23,11 @@ const AddVacant = {
         urlCompany: { type: GraphQLString },
     },
     resolve(parentValue, args){
-        const query = `INSERT INTO vacants (title ,company,town,description,status,rating,modality,date,salary,urlVacant,urlCompany) VALUES ($1,$,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`;
-        const values = [args.podium];
+        const query = `INSERT INTO vacants (title ,company,town,description,status,rating,modality,date,salary,urlVacant,urlCompany) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`;
+        const values = [
+            args.title,
+            args.company,
+        ];
         return db
             .one(query,values)
             .then((res) => res )
