@@ -14,8 +14,6 @@ const AddVacant = {
         company: { type: GraphQLString },
         description: { type: GraphQLString },
         town: { type: GraphQLString },
-        status: { type: GraphQLString },
-        rating: { type: GraphQLInt },
         modality: { type: GraphQLString },
         date: { type: GraphQLDate },
         salary: { type: GraphQLString },
@@ -23,10 +21,19 @@ const AddVacant = {
         urlCompany: { type: GraphQLString },
     },
     resolve(parentValue, args){
-        const query = `INSERT INTO vacants (title ,company,town,description,status,rating,modality,date,salary,urlVacant,urlCompany) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`;
+        const query = `INSERT INTO public.vacants (title ,company,town,description,status,rating,modality,date,salary,"urlCompany","urlVacant") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`;
         const values = [
             args.title,
             args.company,
+            args.town,
+            args.description,
+            'Sin Aprobar',
+            0,
+            args.modality,
+            args.date,
+            args.salary,
+            args.urlVacant,
+            args.urlCompany,
         ];
         return db
             .one(query,values)
